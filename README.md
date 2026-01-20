@@ -16,6 +16,7 @@ LLMが「確率的にテキストを生成している」ことを、**同一プ
 - **デバッグモード**: `logprobs` を収集し、トークンごとの詳細な確率分布を記録
 - **レジューム機能**: プロンプトのハッシュ化により、中断された実行を再開したり試行回数を追加可能
 - **チェックポイント**: 大規模な実行時、一定間隔ごとに中間結果を保存
+- **パス圧縮 (Radix Tree)**: 分岐のない連続した文字の並びを一つのエッジ（文字列）にまとめ、可読性を向上
 - **可視化**: 収集したデータをMermaid形式やGraphviz (PNG) でグラフ化する機能
 
 ## クイックスタート
@@ -30,11 +31,17 @@ LLMが「確率的にテキストを生成している」ことを、**同一プ
 # 基本的な実行 (10回実行、並列数5)
 uv run python -m collector --prompt "Hi" --n 10
 
+# パス圧縮を有効にして実行 (グラフが整理された状態で保存されます)
+uv run python -m collector --prompt "Hi" --n 10 --compress
+
 # デバッグモード (logprobsを収集)
 uv run python -m collector --prompt "Hi" --n 10 --debug
+```
 
-# 追加実行 (既存のファイルをハッシュで自動検出し、不足分のみ実行)
-uv run python -m collector --prompt "Hi" --n 20
+### 既存ファイルの整理
+過去に取得したJSONファイルを後からパス圧縮して整理することも可能です。
+```bash
+PYTHONPATH=. uv run python scripts/compress_json.py input.json output.json
 ```
 
 ### 可視化
@@ -55,6 +62,7 @@ uv run python -m collector.visualizer --input out/run-xxx.json --format png
 - `--temp`: Temperature（デフォルト: 1.0）
 - `--max_tokens`: 最大出力トークン数（デフォルト: 50）
 - `--debug`: デバッグモードを有効にし、`logprobs` を収集
+- `--compress`: グラフのパス圧縮（Radix Tree）を有効化
 - `--format`: (visualizerのみ) 出力形式。`mermaid` (デフォルト) または `png`
 
 ## 出力ファイル構造
@@ -71,7 +79,10 @@ uv run python -m collector.visualizer --input out/run-xxx.json --format png
     },
     ...
   ],
-  "graph": { ... },
+  "graph": {
+    "nodes": [ ... ],
+    "edges": [ { "from": 0, "to": 1, "ch": "YES", "count": 50 }, ... ]
+  },
   "stats": { ... }
 }
 ```
