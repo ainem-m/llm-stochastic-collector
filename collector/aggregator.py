@@ -48,6 +48,55 @@ class Aggregator:
                 })
         return nodes_data, edges_data
 
+    def get_compressed_graph_data(self) -> Tuple[List[dict], List[dict]]:
+        """
+        パス圧縮（Radix Tree）を適用したグラフデータを返す。
+        分岐のない連続したノードを統合する。
+        """
+        compressed_nodes = []
+        compressed_edges = []
+        
+        # 訪問済みノードセット（統合後のルート候補として管理）
+        # 基本的に root から開始
+        stack = [(self.root, self.root.node_id)]
+        visited_nodes = {self.root.node_id}
+        compressed_nodes.append({"id": self.root.node_id, "depth": self.root.depth})
+
+        while stack:
+            curr_node, curr_compressed_id = stack.pop()
+            
+            for char, child in curr_node.children.items():
+                edge_label = char
+                edge_count = curr_node.counts[char]
+                next_node = child
+                
+                # 直収（子が1つだけで、かつその子への流入が出口と同じ）の間、圧縮を続ける
+                # ただし、元の Trie なので child への流入は 1箇所のみであることが保証されている
+                while len(next_node.children) == 1:
+                    # 子ノードの唯一の遷移先を取得
+                    next_char, nn = list(next_node.children.items())[0]
+                    # もし next_node のカウントと nn へのカウントが同じ（漏れがない）なら圧縮
+                    if next_node.counts[next_char] == edge_count:
+                        edge_label += next_char
+                        next_node = nn
+                    else:
+                        break
+                
+                # 新しいノードを登録（もしまだなら）
+                if next_node.node_id not in visited_nodes:
+                    compressed_nodes.append({"id": next_node.node_id, "depth": next_node.depth})
+                    visited_nodes.add(next_node.node_id)
+                    stack.append((next_node, next_node.node_id))
+                
+                compressed_edges.append({
+                    "from": curr_compressed_id,
+                    "to": next_node.node_id,
+                    "ch": edge_label,
+                    "count": edge_count
+                })
+                
+        return compressed_nodes, compressed_edges
+
     def calculate_stats(self) -> dict:
         # 簡易的な統計計算の実装
         total_ok = 0 # 外部で管理

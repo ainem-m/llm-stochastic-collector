@@ -18,10 +18,8 @@ def generate_mermaid(data: Dict[str, Any]) -> str:
         label = edge["ch"]
         count = edge["count"]
         
-        # 特殊文字の処理
-        if label == "\n":
-            label = "\\n"
-        elif label == " ":
+        label = edge["ch"].replace("\n", "\\n").replace("\r", "\\r")
+        if label == " ":
             label = "(space)"
             
         # Mermaid形式: from_id -- "char (count)" --> to_id
@@ -52,8 +50,7 @@ def generate_graphviz(data: Dict[str, Any], output_path: str = "graph"):
         label = edge["ch"]
         count = edge["count"]
         
-        if label == "\n":
-            label = "\\n"
+        label = edge["ch"].replace("\n", "\\n").replace("\r", "\\r")
         
         # 太さを出現頻度に比例させる
         penwidth = str(max(1, (count / max_count) * 5))

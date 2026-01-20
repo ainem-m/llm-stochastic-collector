@@ -26,6 +26,7 @@ async def main():
     parser.add_argument("--temp", type=float, default=1.0, help="Temperature")
     parser.add_argument("--max_tokens", type=int, default=50, help="Max output tokens")
     parser.add_argument("--debug", action="store_true", help="Enable debug mode (collect logprobs)")
+    parser.add_argument("--compress", action="store_true", help="Enable graph path compression (Radix Tree)")
     
     args = parser.parse_args()
 
@@ -86,7 +87,11 @@ async def main():
 
         def save_output(all_runs, is_checkpoint=False):
             # 集計
-            nodes_data, edges_data = aggregator.get_graph_data()
+            if args.compress:
+                nodes_data, edges_data = aggregator.get_compressed_graph_data()
+            else:
+                nodes_data, edges_data = aggregator.get_graph_data()
+                
             trie_stats = aggregator.calculate_stats()
             
             ok_count = sum(1 for r in all_runs if r.get("status") == "ok")
