@@ -1,0 +1,1118 @@
+{
+  "meta": {
+    "run_id": "20260120-170733",
+    "created_at": "2026-01-20T17:07:33.077323",
+    "library": {
+      "python": "3.13.1",
+      "openai": "v2"
+    },
+    "host": {
+      "os": "darwin"
+    },
+    "notes": null
+  },
+  "config": {
+    "model": "gpt-4.1-mini",
+    "prompt": "北海道の県庁所在地は札幌である。◯か✗か？",
+    "n": 10,
+    "concurrency": 5,
+    "request": {
+      "max_output_tokens": 50,
+      "temperature": 1.0,
+      "top_p": null,
+      "seed": null,
+      "store": false
+    },
+    "normalization": {
+      "enabled": false,
+      "rules": {}
+    }
+  },
+  "runs": [
+    {
+      "id": 0,
+      "text": "◯です。北海道の県庁所在地は札幌市です。",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 27,
+        "output_tokens": 17
+      },
+      "deviation": null
+    },
+    {
+      "id": 1,
+      "text": "◯です。北海道の県庁所在地は札幌市です。",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 27,
+        "output_tokens": 17
+      },
+      "deviation": null
+    },
+    {
+      "id": 2,
+      "text": "◯です。  \n北海道の県庁所在地は札幌市です。",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 27,
+        "output_tokens": 18
+      },
+      "deviation": null
+    },
+    {
+      "id": 3,
+      "text": "◯です。  \n北海道の道庁所在地は札幌市です。",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 27,
+        "output_tokens": 18
+      },
+      "deviation": null
+    },
+    {
+      "id": 4,
+      "text": "◯です。  \n北海道の県庁所在地は札幌市です。",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 27,
+        "output_tokens": 18
+      },
+      "deviation": null
+    },
+    {
+      "id": 5,
+      "text": "◯です。北海道の県庁所在地は札幌市です。",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 27,
+        "output_tokens": 17
+      },
+      "deviation": null
+    },
+    {
+      "id": 6,
+      "text": "◯です。  \n北海道の道庁所在地は札幌市です。",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 27,
+        "output_tokens": 18
+      },
+      "deviation": null
+    },
+    {
+      "id": 7,
+      "text": "◯です。北海道の県庁所在地は札幌市です。",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 27,
+        "output_tokens": 17
+      },
+      "deviation": null
+    },
+    {
+      "id": 8,
+      "text": "◯です。北海道の県庁所在地は札幌市です。",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 27,
+        "output_tokens": 17
+      },
+      "deviation": null
+    },
+    {
+      "id": 9,
+      "text": "◯です。北海道の県庁所在地は札幌市です。",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 27,
+        "output_tokens": 17
+      },
+      "deviation": null
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": 0,
+        "depth": 0
+      },
+      {
+        "id": 1,
+        "depth": 1
+      },
+      {
+        "id": 2,
+        "depth": 2
+      },
+      {
+        "id": 3,
+        "depth": 3
+      },
+      {
+        "id": 4,
+        "depth": 4
+      },
+      {
+        "id": 5,
+        "depth": 5
+      },
+      {
+        "id": 6,
+        "depth": 6
+      },
+      {
+        "id": 7,
+        "depth": 7
+      },
+      {
+        "id": 8,
+        "depth": 8
+      },
+      {
+        "id": 9,
+        "depth": 9
+      },
+      {
+        "id": 10,
+        "depth": 10
+      },
+      {
+        "id": 11,
+        "depth": 11
+      },
+      {
+        "id": 12,
+        "depth": 12
+      },
+      {
+        "id": 13,
+        "depth": 13
+      },
+      {
+        "id": 14,
+        "depth": 14
+      },
+      {
+        "id": 15,
+        "depth": 15
+      },
+      {
+        "id": 16,
+        "depth": 16
+      },
+      {
+        "id": 17,
+        "depth": 17
+      },
+      {
+        "id": 18,
+        "depth": 18
+      },
+      {
+        "id": 19,
+        "depth": 19
+      },
+      {
+        "id": 20,
+        "depth": 20
+      },
+      {
+        "id": 21,
+        "depth": 21
+      },
+      {
+        "id": 22,
+        "depth": 22
+      },
+      {
+        "id": 23,
+        "depth": 23
+      },
+      {
+        "id": 24,
+        "depth": 12
+      },
+      {
+        "id": 25,
+        "depth": 13
+      },
+      {
+        "id": 26,
+        "depth": 14
+      },
+      {
+        "id": 27,
+        "depth": 15
+      },
+      {
+        "id": 28,
+        "depth": 16
+      },
+      {
+        "id": 29,
+        "depth": 17
+      },
+      {
+        "id": 30,
+        "depth": 18
+      },
+      {
+        "id": 31,
+        "depth": 19
+      },
+      {
+        "id": 32,
+        "depth": 20
+      },
+      {
+        "id": 33,
+        "depth": 21
+      },
+      {
+        "id": 34,
+        "depth": 22
+      },
+      {
+        "id": 35,
+        "depth": 23
+      },
+      {
+        "id": 36,
+        "depth": 5
+      },
+      {
+        "id": 37,
+        "depth": 6
+      },
+      {
+        "id": 38,
+        "depth": 7
+      },
+      {
+        "id": 39,
+        "depth": 8
+      },
+      {
+        "id": 40,
+        "depth": 9
+      },
+      {
+        "id": 41,
+        "depth": 10
+      },
+      {
+        "id": 42,
+        "depth": 11
+      },
+      {
+        "id": 43,
+        "depth": 12
+      },
+      {
+        "id": 44,
+        "depth": 13
+      },
+      {
+        "id": 45,
+        "depth": 14
+      },
+      {
+        "id": 46,
+        "depth": 15
+      },
+      {
+        "id": 47,
+        "depth": 16
+      },
+      {
+        "id": 48,
+        "depth": 17
+      },
+      {
+        "id": 49,
+        "depth": 18
+      },
+      {
+        "id": 50,
+        "depth": 19
+      },
+      {
+        "id": 51,
+        "depth": 20
+      }
+    ],
+    "edges": [
+      {
+        "from": 0,
+        "to": 1,
+        "ch": "◯",
+        "count": 10,
+        "p": null
+      },
+      {
+        "from": 1,
+        "to": 2,
+        "ch": "で",
+        "count": 10,
+        "p": null
+      },
+      {
+        "from": 2,
+        "to": 3,
+        "ch": "す",
+        "count": 10,
+        "p": null
+      },
+      {
+        "from": 3,
+        "to": 4,
+        "ch": "。",
+        "count": 10,
+        "p": null
+      },
+      {
+        "from": 4,
+        "to": 5,
+        "ch": " ",
+        "count": 4,
+        "p": null
+      },
+      {
+        "from": 4,
+        "to": 36,
+        "ch": "北",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 5,
+        "to": 6,
+        "ch": " ",
+        "count": 4,
+        "p": null
+      },
+      {
+        "from": 6,
+        "to": 7,
+        "ch": "\n",
+        "count": 4,
+        "p": null
+      },
+      {
+        "from": 7,
+        "to": 8,
+        "ch": "北",
+        "count": 4,
+        "p": null
+      },
+      {
+        "from": 8,
+        "to": 9,
+        "ch": "海",
+        "count": 4,
+        "p": null
+      },
+      {
+        "from": 9,
+        "to": 10,
+        "ch": "道",
+        "count": 4,
+        "p": null
+      },
+      {
+        "from": 10,
+        "to": 11,
+        "ch": "の",
+        "count": 4,
+        "p": null
+      },
+      {
+        "from": 11,
+        "to": 12,
+        "ch": "道",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 11,
+        "to": 24,
+        "ch": "県",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 12,
+        "to": 13,
+        "ch": "庁",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 13,
+        "to": 14,
+        "ch": "所",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 14,
+        "to": 15,
+        "ch": "在",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 15,
+        "to": 16,
+        "ch": "地",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 16,
+        "to": 17,
+        "ch": "は",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 17,
+        "to": 18,
+        "ch": "札",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 18,
+        "to": 19,
+        "ch": "幌",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 19,
+        "to": 20,
+        "ch": "市",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 20,
+        "to": 21,
+        "ch": "で",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 21,
+        "to": 22,
+        "ch": "す",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 22,
+        "to": 23,
+        "ch": "。",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 24,
+        "to": 25,
+        "ch": "庁",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 25,
+        "to": 26,
+        "ch": "所",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 26,
+        "to": 27,
+        "ch": "在",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 27,
+        "to": 28,
+        "ch": "地",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 28,
+        "to": 29,
+        "ch": "は",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 29,
+        "to": 30,
+        "ch": "札",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 30,
+        "to": 31,
+        "ch": "幌",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 31,
+        "to": 32,
+        "ch": "市",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 32,
+        "to": 33,
+        "ch": "で",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 33,
+        "to": 34,
+        "ch": "す",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 34,
+        "to": 35,
+        "ch": "。",
+        "count": 2,
+        "p": null
+      },
+      {
+        "from": 36,
+        "to": 37,
+        "ch": "海",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 37,
+        "to": 38,
+        "ch": "道",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 38,
+        "to": 39,
+        "ch": "の",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 39,
+        "to": 40,
+        "ch": "県",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 40,
+        "to": 41,
+        "ch": "庁",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 41,
+        "to": 42,
+        "ch": "所",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 42,
+        "to": 43,
+        "ch": "在",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 43,
+        "to": 44,
+        "ch": "地",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 44,
+        "to": 45,
+        "ch": "は",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 45,
+        "to": 46,
+        "ch": "札",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 46,
+        "to": 47,
+        "ch": "幌",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 47,
+        "to": 48,
+        "ch": "市",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 48,
+        "to": 49,
+        "ch": "で",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 49,
+        "to": 50,
+        "ch": "す",
+        "count": 6,
+        "p": null
+      },
+      {
+        "from": 50,
+        "to": 51,
+        "ch": "。",
+        "count": 6,
+        "p": null
+      }
+    ]
+  },
+  "stats": {
+    "totals": {
+      "ok": 10,
+      "error": 0,
+      "total_chars": 212
+    },
+    "depth_stats": [
+      {
+        "depth": 0,
+        "total_transitions": 10,
+        "unique_chars": 1,
+        "top_chars": [
+          {
+            "ch": "◯",
+            "count": 10,
+            "p": 1.0
+          }
+        ],
+        "entropy_bits": 0.0
+      },
+      {
+        "depth": 1,
+        "total_transitions": 10,
+        "unique_chars": 1,
+        "top_chars": [
+          {
+            "ch": "で",
+            "count": 10,
+            "p": 1.0
+          }
+        ],
+        "entropy_bits": 0.0
+      },
+      {
+        "depth": 2,
+        "total_transitions": 10,
+        "unique_chars": 1,
+        "top_chars": [
+          {
+            "ch": "す",
+            "count": 10,
+            "p": 1.0
+          }
+        ],
+        "entropy_bits": 0.0
+      },
+      {
+        "depth": 3,
+        "total_transitions": 10,
+        "unique_chars": 1,
+        "top_chars": [
+          {
+            "ch": "。",
+            "count": 10,
+            "p": 1.0
+          }
+        ],
+        "entropy_bits": 0.0
+      },
+      {
+        "depth": 4,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "北",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": " ",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 5,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "海",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": " ",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 6,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "道",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "\n",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 7,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "の",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "北",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 8,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "県",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "海",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 9,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "庁",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "道",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 10,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "所",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "の",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 11,
+        "total_transitions": 10,
+        "unique_chars": 3,
+        "top_chars": [
+          {
+            "ch": "在",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "道",
+            "count": 2,
+            "p": 0.2
+          },
+          {
+            "ch": "県",
+            "count": 2,
+            "p": 0.2
+          }
+        ],
+        "entropy_bits": 1.3709505944546687
+      },
+      {
+        "depth": 12,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "地",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "庁",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 13,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "は",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "所",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 14,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "札",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "在",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 15,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "幌",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "地",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 16,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "市",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "は",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 17,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "で",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "札",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 18,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "す",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "幌",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 19,
+        "total_transitions": 10,
+        "unique_chars": 2,
+        "top_chars": [
+          {
+            "ch": "。",
+            "count": 6,
+            "p": 0.6
+          },
+          {
+            "ch": "市",
+            "count": 4,
+            "p": 0.4
+          }
+        ],
+        "entropy_bits": 0.9709505944546686
+      },
+      {
+        "depth": 20,
+        "total_transitions": 4,
+        "unique_chars": 1,
+        "top_chars": [
+          {
+            "ch": "で",
+            "count": 4,
+            "p": 1.0
+          }
+        ],
+        "entropy_bits": 0.0
+      },
+      {
+        "depth": 21,
+        "total_transitions": 4,
+        "unique_chars": 1,
+        "top_chars": [
+          {
+            "ch": "す",
+            "count": 4,
+            "p": 1.0
+          }
+        ],
+        "entropy_bits": 0.0
+      },
+      {
+        "depth": 22,
+        "total_transitions": 4,
+        "unique_chars": 1,
+        "top_chars": [
+          {
+            "ch": "。",
+            "count": 4,
+            "p": 1.0
+          }
+        ],
+        "entropy_bits": 0.0
+      }
+    ],
+    "deviations": null
+  }
+}

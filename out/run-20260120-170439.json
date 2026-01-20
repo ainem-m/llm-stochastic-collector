@@ -1,0 +1,269 @@
+{
+  "meta": {
+    "run_id": "20260120-170439",
+    "created_at": "2026-01-20T17:04:39.403368",
+    "library": {
+      "python": "3.13.1",
+      "openai": "v2"
+    },
+    "host": {
+      "os": "darwin"
+    },
+    "notes": null
+  },
+  "config": {
+    "model": "gpt-4o-mini",
+    "prompt": "Answer only YES or NO. Is the sky blue?",
+    "n": 10,
+    "concurrency": 5,
+    "request": {
+      "max_output_tokens": 50,
+      "temperature": 1.0,
+      "top_p": null,
+      "seed": null,
+      "store": false
+    },
+    "normalization": {
+      "enabled": false,
+      "rules": {}
+    }
+  },
+  "runs": [
+    {
+      "id": 0,
+      "text": "YES",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 18,
+        "output_tokens": 1
+      },
+      "deviation": null
+    },
+    {
+      "id": 1,
+      "text": "YES",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 18,
+        "output_tokens": 1
+      },
+      "deviation": null
+    },
+    {
+      "id": 2,
+      "text": "YES",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 18,
+        "output_tokens": 1
+      },
+      "deviation": null
+    },
+    {
+      "id": 3,
+      "text": "YES",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 18,
+        "output_tokens": 1
+      },
+      "deviation": null
+    },
+    {
+      "id": 4,
+      "text": "YES",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 18,
+        "output_tokens": 1
+      },
+      "deviation": null
+    },
+    {
+      "id": 5,
+      "text": "YES",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 18,
+        "output_tokens": 1
+      },
+      "deviation": null
+    },
+    {
+      "id": 6,
+      "text": "YES.",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 18,
+        "output_tokens": 2
+      },
+      "deviation": null
+    },
+    {
+      "id": 7,
+      "text": "YES",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 18,
+        "output_tokens": 1
+      },
+      "deviation": null
+    },
+    {
+      "id": 8,
+      "text": "YES",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 18,
+        "output_tokens": 1
+      },
+      "deviation": null
+    },
+    {
+      "id": 9,
+      "text": "YES.",
+      "raw_text": null,
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 18,
+        "output_tokens": 2
+      },
+      "deviation": null
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": 0,
+        "depth": 0
+      },
+      {
+        "id": 1,
+        "depth": 1
+      },
+      {
+        "id": 2,
+        "depth": 2
+      },
+      {
+        "id": 3,
+        "depth": 3
+      },
+      {
+        "id": 4,
+        "depth": 4
+      }
+    ],
+    "edges": [
+      {
+        "from": 0,
+        "to": 1,
+        "ch": "Y",
+        "count": 10,
+        "p": null
+      },
+      {
+        "from": 1,
+        "to": 2,
+        "ch": "E",
+        "count": 10,
+        "p": null
+      },
+      {
+        "from": 2,
+        "to": 3,
+        "ch": "S",
+        "count": 10,
+        "p": null
+      },
+      {
+        "from": 3,
+        "to": 4,
+        "ch": ".",
+        "count": 2,
+        "p": null
+      }
+    ]
+  },
+  "stats": {
+    "totals": {
+      "ok": 10,
+      "error": 0,
+      "total_chars": 32
+    },
+    "depth_stats": [
+      {
+        "depth": 0,
+        "total_transitions": 10,
+        "unique_chars": 1,
+        "top_chars": [
+          {
+            "ch": "Y",
+            "count": 10,
+            "p": 1.0
+          }
+        ],
+        "entropy_bits": 0.0
+      },
+      {
+        "depth": 1,
+        "total_transitions": 10,
+        "unique_chars": 1,
+        "top_chars": [
+          {
+            "ch": "E",
+            "count": 10,
+            "p": 1.0
+          }
+        ],
+        "entropy_bits": 0.0
+      },
+      {
+        "depth": 2,
+        "total_transitions": 10,
+        "unique_chars": 1,
+        "top_chars": [
+          {
+            "ch": "S",
+            "count": 10,
+            "p": 1.0
+          }
+        ],
+        "entropy_bits": 0.0
+      },
+      {
+        "depth": 3,
+        "total_transitions": 2,
+        "unique_chars": 1,
+        "top_chars": [
+          {
+            "ch": ".",
+            "count": 2,
+            "p": 1.0
+          }
+        ],
+        "entropy_bits": 0.0
+      }
+    ],
+    "deviations": null
+  }
+}
