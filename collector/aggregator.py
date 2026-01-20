@@ -14,6 +14,14 @@ class Aggregator:
         self.nodes.append(self.root)
         self._next_id = 1
 
+    def load_from_runs(self, runs: List[dict]):
+        """
+        既存の実行結果（runs）をアグリゲーターに読み込む。
+        """
+        for run in runs:
+            if run.get("status") == "ok":
+                self.add_text(run.get("text", ""))
+
     def add_text(self, text: str):
         current = self.root
         for char in text:

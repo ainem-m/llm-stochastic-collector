@@ -15,7 +15,9 @@ class Runner:
         n: int,
         concurrency: int,
         request_params: dict,
-        on_result: Optional[Callable[[str, dict], Any]] = None
+        on_result: Optional[Callable[[str, dict], Any]] = None,
+        on_checkpoint: Optional[Callable[[List[dict]], Any]] = None,
+        checkpoint_interval: int = 100
     ):
         self.client = client
         self.model = model
@@ -24,6 +26,8 @@ class Runner:
         self.concurrency = concurrency
         self.request_params = request_params
         self.on_result = on_result
+        self.on_checkpoint = on_checkpoint
+        self.checkpoint_interval = checkpoint_interval
         self._semaphore = asyncio.Semaphore(concurrency)
         self._results = []
         self._errors = []
@@ -92,9 +96,13 @@ class Runner:
         tasks = [self._call_api(i) for i in range(self.n)]
         
         results = []
-        for task in tqdm(asyncio.as_completed(tasks), total=self.n, desc="Collecting"):
+        for i, task in enumerate(tqdm(asyncio.as_completed(tasks), total=self.n, desc="Collecting")):
             res = await task
             results.append(res)
+            
+            # チェックポイントの実行
+            if self.on_checkpoint and (i + 1) % self.checkpoint_interval == 0:
+                self.on_checkpoint(results)
             
         self._results = sorted(results, key=lambda x: x["id"])
         return self._results
