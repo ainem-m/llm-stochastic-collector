@@ -27,6 +27,8 @@ async def main():
     parser.add_argument("--max_tokens", type=int, default=50, help="Max output tokens")
     parser.add_argument("--debug", action="store_true", help="Enable debug mode (collect logprobs)")
     parser.add_argument("--compress", action="store_true", help="Enable graph path compression (Radix Tree)")
+    parser.add_argument("--bpe-compress", action="store_true", help="Enable custom BPE training and token-level graph")
+    parser.add_argument("--bpe-vocab", type=int, default=1000, help="Vocabulary size for custom BPE")
     
     args = parser.parse_args()
 
@@ -86,13 +88,29 @@ async def main():
             request_params["top_logprobs"] = 5
 
         def save_output(all_runs, is_checkpoint=False):
-            # 集計
-            if args.compress:
-                nodes_data, edges_data = aggregator.get_compressed_graph_data()
-            else:
-                nodes_data, edges_data = aggregator.get_graph_data()
+            # 集計用アグリゲーターの決定
+            target_aggregator = aggregator
+            
+            if args.bpe_compress:
+                from collector.bpe_manager import BPEManager
+                print(f"\nTraining custom BPE (vocab_size={args.bpe_vocab})...")
+                bpe = BPEManager(vocab_size=args.bpe_vocab)
+                texts = [r.get("text", "") for r in all_runs if r.get("status") == "ok"]
+                bpe.train(texts)
                 
-            trie_stats = aggregator.calculate_stats()
+                # トークンベースで再構築
+                target_aggregator = Aggregator()
+                for text in texts:
+                    tokens = bpe.tokenize(text)
+                    target_aggregator.add_tokens(tokens)
+                print(f"Token-level graph built: {len(target_aggregator.nodes)} nodes.")
+
+            if args.compress:
+                nodes_data, edges_data = target_aggregator.get_compressed_graph_data()
+            else:
+                nodes_data, edges_data = target_aggregator.get_graph_data()
+                
+            trie_stats = target_aggregator.calculate_stats()
             
             ok_count = sum(1 for r in all_runs if r.get("status") == "ok")
             error_count = len(all_runs) - ok_count

@@ -35,6 +35,20 @@ class Aggregator:
             current.counts[char] += 1
             current = current.children[char]
 
+    def add_tokens(self, tokens: List[str]):
+        """トークンのリストをアグリゲーターに追加する"""
+        current = self.root
+        for token in tokens:
+            if token not in current.children:
+                new_node = TrieNode(self._next_id, current.depth + 1)
+                self._next_id += 1
+                current.children[token] = new_node
+                self.nodes.append(new_node)
+                current.counts[token] = 0
+            
+            current.counts[token] += 1
+            current = current.children[token]
+
     def get_graph_data(self) -> Tuple[List[dict], List[dict]]:
         nodes_data = [{"id": node.node_id, "depth": node.depth} for node in self.nodes]
         edges_data = []

@@ -17,6 +17,7 @@ LLMが「確率的にテキストを生成している」ことを、**同一プ
 - **レジューム機能**: プロンプトのハッシュ化により、中断された実行を再開したり試行回数を追加可能
 - **チェックポイント**: 大規模な実行時、一定間隔ごとに中間結果を保存
 - **パス圧縮 (Radix Tree)**: 分岐のない連続した文字の並びを一つのエッジ（文字列）にまとめ、可読性を向上
+- **カスタムBPE圧縮**: 収集したデータから独自の語彙を学習し、単語・フレーズ単位でグラフを構築（最強の圧縮率）
 - **可視化**: 収集したデータをMermaid形式やGraphviz (PNG) でグラフ化する機能
 
 ## クイックスタート
@@ -31,8 +32,11 @@ LLMが「確率的にテキストを生成している」ことを、**同一プ
 # 基本的な実行 (10回実行、並列数5)
 uv run python -m collector --prompt "Hi" --n 10
 
-# パス圧縮を有効にして実行 (グラフが整理された状態で保存されます)
+# パス圧縮を有効にして実行 (文字ベース)
 uv run python -m collector --prompt "Hi" --n 10 --compress
+
+# カスタムBPE圧縮を有効にして実行 (トークンベース)
+uv run python -m collector --prompt "Hi" --n 10 --bpe-compress --bpe-vocab 1000
 
 # デバッグモード (logprobsを収集)
 uv run python -m collector --prompt "Hi" --n 10 --debug
@@ -41,7 +45,11 @@ uv run python -m collector --prompt "Hi" --n 10 --debug
 ### 既存ファイルの整理
 過去に取得したJSONファイルを後からパス圧縮して整理することも可能です。
 ```bash
+# 通常のパス圧縮
 PYTHONPATH=. uv run python scripts/compress_json.py input.json output.json
+
+# BPE圧縮 (推奨)
+PYTHONPATH=. uv run python scripts/compress_json.py input.json output.json --bpe --vocab 1000
 ```
 
 ### 可視化
@@ -63,6 +71,8 @@ uv run python -m collector.visualizer --input out/run-xxx.json --format png
 - `--max_tokens`: 最大出力トークン数（デフォルト: 50）
 - `--debug`: デバッグモードを有効にし、`logprobs` を収集
 - `--compress`: グラフのパス圧縮（Radix Tree）を有効化
+- `--bpe-compress`: カスタムBPEによるトークン単位のグラフ構築を有効化
+- `--bpe-vocab`: BPEの語彙サイズ（デフォルト: 1000）
 - `--format`: (visualizerのみ) 出力形式。`mermaid` (デフォルト) または `png`
 
 ## 出力ファイル構造
