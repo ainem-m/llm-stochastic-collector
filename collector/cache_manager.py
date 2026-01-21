@@ -24,11 +24,20 @@ def find_latest_run(output_dir: str, prompt_hash: str) -> Optional[Path]:
     if not dir_path.exists():
         return None
     
+    # run-*.json と checkpoint-*.json の両方を探す
     candidates = list(dir_path.glob(f"run-*-{prompt_hash}.json"))
+    candidates.extend(list(dir_path.glob(f"checkpoint-*-{prompt_hash}.json")))
+    
     if not candidates:
-        # 旧形式のファイルも一応チェック（中身を見てハッシュが一致するか確認するのは重いので、名前ベースのみ）
         return None
     
-    # タイムスタンプ順にソートして最新を返す
-    candidates.sort(key=lambda p: p.name, reverse=True)
+    # タイムスタンプ部分（インデックス1:日付, 2:時刻）でソートして最新を返す
+    # 形式: {prefix}-{date}-{time}-{hash}.json
+    def sort_key(p: Path):
+        parts = p.name.split("-")
+        if len(parts) >= 3:
+            return f"{parts[1]}-{parts[2]}" # YYYYMMDD-HHMMSS
+        return p.name
+
+    candidates.sort(key=sort_key, reverse=True)
     return candidates[0]
