@@ -27,9 +27,9 @@ def generate_mermaid(data: Dict[str, Any]) -> str:
         
     return "\n".join(lines)
 
-def generate_graphviz(data: Dict[str, Any], output_path: str = "graph"):
+def generate_graphviz(data: Dict[str, Any], output_path: str = "graph", fmt: str = "png"):
     """JSONデータからGraphvizを使用してグラフ画像を生成する"""
-    dot = graphviz.Digraph(comment='Char-Graph Visualization', format='png')
+    dot = graphviz.Digraph(comment='Char-Graph Visualization', format=fmt)
     dot.attr(rankdir='LR')
     
     graph = data.get("graph", {})
@@ -39,7 +39,7 @@ def generate_graphviz(data: Dict[str, Any], output_path: str = "graph"):
     # ノード追加
     for node in nodes:
         node_id = str(node["id"])
-        dot.node(node_id, label=node_id) # 本来はprefixがいいがデータ構造上はidのみ
+        dot.node(node_id, label=node_id)
         
     # エッジ追加
     max_count = max([e["count"] for e in edges]) if edges else 1
@@ -47,24 +47,30 @@ def generate_graphviz(data: Dict[str, Any], output_path: str = "graph"):
     for edge in edges:
         from_id = str(edge["from"])
         to_id = str(edge["to"])
-        label = edge["ch"]
         count = edge["count"]
         
-        label = edge["ch"].replace("\n", "\\n").replace("\r", "\\r")
+        # 特殊文字（特に絵文字など）が dot -Tpng をクラッシュさせることがあるためサニタイズ
+        # 非BMP文字 (絵文字など) を '?' に置換
+        raw_ch = edge["ch"]
+        sanitized_ch = "".join([c if ord(c) <= 0xFFFF else "?" for c in raw_ch])
         
+        label = sanitized_ch.replace("\n", "\\n").replace("\r", "\\r")
+        if label == " ":
+            label = "(space)"
+            
         # 太さを出現頻度に比例させる
         penwidth = str(max(1, (count / max_count) * 5))
         
         dot.edge(from_id, to_id, label=f"{label} ({count})", penwidth=penwidth)
         
     dot.render(output_path, cleanup=True)
-    return f"{output_path}.png"
+    return f"{output_path}.{fmt}"
 
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Visualize Char-Graph JSON")
     parser.add_argument("--input", required=True, help="Path to the input JSON file")
-    parser.add_argument("--format", choices=["mermaid", "png"], default="png", help="Output format")
+    parser.add_argument("--format", choices=["mermaid", "png", "svg"], default="png", help="Output format")
     parser.add_argument("--out", default="graph_output", help="Output filename (base)")
     
     args = parser.parse_args()
@@ -75,5 +81,5 @@ if __name__ == "__main__":
     if args.format == "mermaid":
         print(generate_mermaid(data))
     else:
-        path = generate_graphviz(data, args.out)
+        path = generate_graphviz(data, args.out, args.format)
         print(f"Graph rendered to {path}")
