@@ -5,6 +5,7 @@ build/
 dist/
 wheels/
 *.egg-info
+.DS_Store
 
 # Virtual environments
 .venv
@@ -12,4 +13,9 @@ wheels/
 # env file
 .env
 
+# Local scratch visualization files
+/test*.dot
+/test*.mermaid
+
+# Generated run outputs
 out/

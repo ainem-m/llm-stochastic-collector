@@ -6,8 +6,12 @@ LLMが「確率的にテキストを生成している」ことを、**同一プ
 
 - **目的**: 記事用の実験データ作成（高並列・文字単位集計）
 - **モデル**: `gpt-4.1-mini` (デフォルト) / その他OpenAI Chatモデル
-- **実装**: Python 3.12+ (uv管理)
+- **実装**: Python 3.13+ (uv管理)
 - **GitHub**: [ainem-m/llm-stochastic-collector](https://github.com/ainem-m/llm-stochastic-collector)
+
+## 公開アーティファクト
+- 公開用実験データ: [artifacts/20260122-first-tooth](artifacts/20260122-first-tooth)
+- 再現性ポリシーと追試手順: [docs/reproducibility.md](docs/reproducibility.md)
 
 ## 主要機能
 - 単一プロンプトのN回繰り返し実行（並列制御可能）
@@ -105,5 +109,5 @@ uv run python -m collector.wordcloud_visualizer --input out/run-xxx.json --out w
 ```
 
 ## 参考（OpenAI Docs）
-- [Responses API (logprobs)](https://platform.openai.com/docs/api-reference/chat/create#chat-create-logprobs)
+- [Chat Completions API (logprobs)](https://platform.openai.com/docs/api-reference/chat/create#chat-create-logprobs)
 - [gpt-4.1-mini](https://platform.openai.com/docs/models/gpt-4.1-mini)

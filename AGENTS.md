@@ -6,9 +6,9 @@
 **LLM Stochastic Output Collector (Char-Graph)** は、LLMの確率的テキスト生成を可視化するための実験用コレクタです。同一プロンプトを最大10,000回実行し、文字単位の遷移グラフ（trie）として集計します。
 
 ## 技術スタック
-- **言語**: Python 3.12+
+- **言語**: Python 3.13+
 - **パッケージ管理**: uv
-- **API**: OpenAI Responses API
+- **API**: OpenAI Chat Completions API (`AsyncOpenAI.chat.completions.create`)
 - **モデル**: gpt-4.1-mini
 - **非同期処理**: AsyncOpenAI + asyncio
 
@@ -49,8 +49,8 @@ prompt_multiple/
 - 429比率に応じて動的に並列数を調整（オプション）
 
 ### 逸脱検出
-- `expected_answers` との完全一致で判定
-- 正規化オプション: strip, newline統一, 句読点除去
+- 現在の実装では未対応
+- 将来拡張として `expected_answers` と正規化ルールを追加する余地がある
 
 ## コマンド例
 ```bash
@@ -58,7 +58,7 @@ prompt_multiple/
 uv sync
 
 # 実行
-python -m collector run \
+uv run python -m collector \
   --prompt "Just answer YES or NO. Is the sky blue?" \
   --n 10000 \
   --concurrency 50 \
@@ -66,7 +66,7 @@ python -m collector run \
 ```
 
 ## 参考リンク
-- [Responses API](https://platform.openai.com/docs/api-reference/responses)
+- [Chat Completions API](https://platform.openai.com/docs/api-reference/chat/create)
 - [gpt-4.1-mini](https://platform.openai.com/docs/models/gpt-4.1-mini)
 - [Rate limits](https://platform.openai.com/docs/guides/rate-limits)
 

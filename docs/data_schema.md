@@ -1,4 +1,4 @@
-# 出力JSONスキーマ（提案）
+# 出力JSONスキーマ（現行実装ベース）
 
 ## 1. ルート
 ```json
@@ -13,16 +13,15 @@
 
 ## 2. meta
 
-* run_id: string（例: "2026-01-20T12:34:56+09:00"）
+* run_id: string（例: `"20260122-125553"`）
 * created_at: string（ISO8601）
 * library:
 
-  * python: "3.12.x"
-  * openai_sdk: "x.y.z"
+  * python: `"3.13.x"`
+  * openai: `"v2"`
 * host:
 
   * os: string
-  * cpu: string（任意）
 * notes: string（任意）
 
 ## 3. config
@@ -49,7 +48,7 @@
 
 * id: int（0..N-1）
 * text: string（生 or 正規化後テキスト）
-* raw_text: string|null（正規化する場合のみ）
+* raw_text: string|null
 * status: "ok" | "error"
 * error:
 
@@ -60,11 +59,8 @@
 
   * input_tokens: int|null
   * output_tokens: int|null
-* deviation:
-
-  * enabled: bool
-  * is_deviation: bool|null
-  * matched_expected: string|null
+* deviation: object|null（現実装では通常 `null`）
+* logprobs: array|null（`--debug` 時のみ）
 
 ## 5. graph（trie）
 
@@ -105,8 +101,4 @@
   * unique_chars: int
   * top_chars: [{ch, count, p}]
   * entropy_bits: number
-* deviations（enabled時）:
-
-  * deviation_count: int
-  * deviation_rate: number
-  * examples: [{id, text}]（上位K件）
+* deviations: object|null（現実装では通常 `null`）
